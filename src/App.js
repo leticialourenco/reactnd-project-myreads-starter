@@ -25,7 +25,9 @@ class BooksApp extends Component {
   render() {
     return (
       <div className="app">
-        <SearchBooks />
+        <SearchBooks
+            books={this.state.books}
+        />
         <ListBooks
           books={this.state.books}
         />
