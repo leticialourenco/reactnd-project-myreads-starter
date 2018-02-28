@@ -37,6 +37,7 @@ class SearchBooks extends Component {
                         books={this.props}
                         value={query}
                         title={'searchResults'}
+                        onChange={this.props.onChange}
                     />
                 </div>
             </div>

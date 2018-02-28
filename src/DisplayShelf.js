@@ -3,6 +3,10 @@ import BookItem from './BookItem'
 import escapeRegExp from 'escape-string-regexp'
 
 class DisplayShelf extends Component {
+    updateBookShelf = (book, shelf) => {
+        this.props.onChange(book, shelf)
+    }
+
     render() {
         const { books } = this.props.books
         let bookList = ''
@@ -20,6 +24,9 @@ class DisplayShelf extends Component {
                                 <li key={book.id}>
                                     <BookItem
                                         book={book}
+                                        onChange={(shelf) => {
+                                            this.props.onChange(book, shelf)
+                                        }}
                                     />
                                 </li>
                             ))}
@@ -42,6 +49,9 @@ class DisplayShelf extends Component {
                                 <li key={book.id}>
                                     <BookItem
                                         book={book}
+                                        onChange={(shelf) => {
+                                            this.updateBookShelf(book, shelf)
+                                        }}
                                     />
                                 </li>
                             ))}

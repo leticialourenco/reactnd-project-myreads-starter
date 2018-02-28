@@ -14,24 +14,27 @@ class ListBooks extends Component {
                     books={this.props}
                     title={'Currently Reading'}
                     value={'currentlyReading'}
+                    onChange={this.props.onChange}
                 />
 
                 <DisplayShelf
                     books={this.props}
                     title={'Want to Read'}
                     value={'wantToRead'}
+                    onChange={this.props.onChange}
                 />
 
                 <DisplayShelf
                     books={this.props}
                     title={'Read'}
                     value={'read'}
+                    onChange={this.props.onChange}
                 />
 
                 <div className="open-search">
                     <Link
-                        to="/search"
-                        Add a book >
+                        to="/search">
+                        Add a book
                     </Link>
                 </div>
             </div>
