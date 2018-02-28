@@ -6,8 +6,11 @@ class ListBooks extends Component {
     render() {
         return (
             <div className="list-books">
-                <div className="list-books-title">
-                    <h1>MyReads</h1>
+                <div className="add-button">
+                    <Link
+                        to="/search">
+                        search
+                    </Link>
                 </div>
 
                 <DisplayShelf
@@ -30,13 +33,6 @@ class ListBooks extends Component {
                     value={'read'}
                     onChange={this.props.onChange}
                 />
-
-                <div className="open-search">
-                    <Link
-                        to="/search">
-                        Add a book
-                    </Link>
-                </div>
             </div>
         )
     }

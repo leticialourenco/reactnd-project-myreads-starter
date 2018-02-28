@@ -19,8 +19,8 @@ class DisplayShelf extends Component {
 
                 if(bookList.length === 0) {
                     return (
-                        <div>
-                            Sorry, no results were found, check your spelling or try another title or author.
+                        <div className="warning">
+                            Sorry, no results were found, check your spelling or try another title or author
                         </div>)
                 } else {
                     return (
@@ -49,7 +49,7 @@ class DisplayShelf extends Component {
 
             return (
                 <div className="bookshelf">
-                    <h2 className="bookshelf-title">{this.props.title}</h2>
+                    <h2 className="bookshelf-title"><span>{this.props.title}</span></h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             { bookList.map((book) => (
