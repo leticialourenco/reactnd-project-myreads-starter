@@ -1,55 +1,56 @@
 import React, { Component } from 'react';
 import BookItem from './BookItem'
-import escapeRegExp from 'escape-string-regexp'
 
 class DisplayShelf extends Component {
+
     updateBookShelf = (book, shelf) => {
         this.props.onChange(book, shelf)
     }
 
     render() {
-        const { books } = this.props.books
-        let bookList = ''
+        let books = this.props.books
+        let title = this.props.title
+        let value = this.props.value
+        let bookList = []
 
-        if (this.props.title === 'searchResults') {
-            if (this.props.value !== '') {
-
-                let match = new RegExp(escapeRegExp(this.props.value), 'i')
-                bookList = books.filter((book) => (match.test(book.title)) || (match.test(book.authors)))
-
-                if(bookList.length === 0) {
-                    return (
-                        <div className="warning">
-                            Sorry, no results were found, check your spelling or try another title or author
-                        </div>)
-                } else {
-                    return (
-                        <div>
-                            <ol className="books-grid">
-                                { bookList.map((book) => (
-                                    <li key={book.id}>
-                                        <BookItem
-                                            book={book}
-                                            onChange={(shelf) => {
-                                                this.props.onChange(book, shelf)
-                                            }}
-                                        />
-                                    </li>
-                                ))}
-                            </ol>
-                        </div>
-                    )
-                }
-            } else {
+        if (title === 'searchResults') {
+            /* if statement works as a helper
+             * so during the first iteration
+             * the Warning message won't show
+             */
+            if(books.length === 0) {
                 return (<div></div>)
-            }
+
+            } else if (books.length) {
+                return (
+                    <div>
+                        <ol className="books-grid">
+                            { books.map((book) => (
+                                <li key={book.id}>
+                                    <BookItem
+                                        book={book}
+                                        onChange={(shelf) => {
+                                            this.props.onChange(book, shelf)
+                                        }}
+                                    />
+                                </li>
+                            ))}
+                        </ol>
+                    </div>
+                )
+            } else {
+                return (
+                    <div className="warning">
+                        Sorry, no matches were found, try another term
+                    </div>
+            )}
 
         } else {
-            bookList = books.filter((book) => book.shelf === this.props.value)
+            bookList = books.books.filter((book) => book.shelf === value)
 
             return (
                 <div className="bookshelf">
-                    <h2 className="bookshelf-title"><span>{this.props.title}</span></h2>
+                    <h2 className="bookshelf-title"><span>{title}</span></h2>
                     <div className="bookshelf-books">
                         <ol className="books-grid">
                             { bookList.map((book) => (

@@ -1,18 +1,49 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import DisplayShelf from "./DisplayShelf"
+import * as BooksAPI from './BooksAPI'
 
 class SearchBooks extends Component {
     state = {
-        query: ''
+        query: '',
+        results: []
     }
 
     updateQuery = (query) => {
         this.setState({ query: query })
+        this.searchBooks(query)
     }
 
-    render() {
-        const { query } = this.state
+    searchBooks = (query) => {
+        if (query.length) {
+                BooksAPI.search(query).then((results) => {
+                    if (results.length) {
+                        results = this.updateShelfInfo(results)
+                    }
+                    this.setState({results: results})
+            })
+        } else {
+            return this.setState({query: '', results: []})
+        }
+    }
+
+    updateShelfInfo = (results) => {
+        let books = this.props.books
+
+        for (let result of results) {
+            for (let book of books) {
+                if (result.id === book.id) {
+                    result.shelf = book.shelf
+                }
+            }
+        }
+
+        return results
+    }
+
+    render(){
+        let query = this.state.query
+        let results = this.state.results
 
         return (
             <div className="search-books">
@@ -34,7 +65,7 @@ class SearchBooks extends Component {
 
                 <div className="search-books-results">
                     <DisplayShelf
-                        books={this.props}
+                        books={results}
                         value={query}
                         title={'searchResults'}
                         onChange={this.props.onChange}
