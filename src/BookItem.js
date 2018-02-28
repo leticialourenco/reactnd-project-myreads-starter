@@ -15,7 +15,7 @@ class BookItem extends Component {
                          style={{
                              width: 128,
                              height: 193,
-                             backgroundImage: `url(${book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'images/default-thumbnail.jpg'})`
+                             backgroundImage: `url(${book.imageLinks ? book.imageLinks.thumbnail : 'images/default-thumbnail.jpg'})`
                          }}>
                     </div>
 
@@ -24,7 +24,7 @@ class BookItem extends Component {
                             onChange={this.updateBookShelf}
                             value={book.shelf}>
 
-                            <option value="none" disabled>Move to...</option>
+                            <option disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
