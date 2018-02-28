@@ -191,6 +191,10 @@ body, .app {
   align-items: flex-end;
 }
 
+.bookshelf {
+  padding: 40px 0;
+}
+
 .book-shelf-changer {
   position: absolute;
   right: 0;
@@ -223,9 +227,6 @@ body, .app {
 }
 
 @media (min-width: 600px) {
-  .bookshelf {
-    padding: 40px 0;
-  }
 
   #root {
     border: solid 20px #333;
