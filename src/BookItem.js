@@ -8,10 +8,6 @@ class BookItem extends Component {
     render() {
         const { book } = this.props
 
-        const getAuthorList = () => {
-            return book.authors ? book.authors.join(', ') : 'unknown'
-        }
-
         return (
             <div className="book">
                 <div className="book-top">
@@ -19,7 +15,7 @@ class BookItem extends Component {
                          style={{
                              width: 128,
                              height: 193,
-                             backgroundImage: `url(${book.imageLinks.thumbnail})`
+                             backgroundImage: `url(${book.imageLinks.thumbnail ? book.imageLinks.thumbnail : 'images/default-thumbnail.jpg'})`
                          }}>
                     </div>
 
@@ -37,7 +33,7 @@ class BookItem extends Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{getAuthorList()}</div>
+                <div className="book-authors">{book.authors ? book.authors.join(', ') : 'Unknown'}</div>
             </div>
         )
     }
