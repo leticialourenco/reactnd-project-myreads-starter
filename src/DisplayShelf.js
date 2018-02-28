@@ -17,22 +17,29 @@ class DisplayShelf extends Component {
                 let match = new RegExp(escapeRegExp(this.props.value), 'i')
                 bookList = books.filter((book) => (match.test(book.title)) || (match.test(book.authors)))
 
-                return (
-                    <div>
-                        <ol className="books-grid">
-                            { bookList.map((book) => (
-                                <li key={book.id}>
-                                    <BookItem
-                                        book={book}
-                                        onChange={(shelf) => {
-                                            this.props.onChange(book, shelf)
-                                        }}
-                                    />
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                )
+                if( bookList.length === 0 ) {
+                    return (
+                        <div>
+                            Sorry, no results were found, check your spelling or try another title or author.
+                        </div>)
+                } else {
+                    return (
+                        <div>
+                            <ol className="books-grid">
+                                { bookList.map((book) => (
+                                    <li key={book.id}>
+                                        <BookItem
+                                            book={book}
+                                            onChange={(shelf) => {
+                                                this.props.onChange(book, shelf)
+                                            }}
+                                        />
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    )
+                }
             } else {
                 return (<div></div>)
             }
