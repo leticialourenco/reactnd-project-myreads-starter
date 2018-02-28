@@ -17,7 +17,7 @@ class DisplayShelf extends Component {
                 let match = new RegExp(escapeRegExp(this.props.value), 'i')
                 bookList = books.filter((book) => (match.test(book.title)) || (match.test(book.authors)))
 
-                if( bookList.length === 0 ) {
+                if(bookList.length === 0) {
                     return (
                         <div>
                             Sorry, no results were found, check your spelling or try another title or author.

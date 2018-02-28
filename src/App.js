@@ -23,7 +23,7 @@ class BooksApp extends Component {
   }
 
   componentDidMount() {
-       this.getBooks()
+      this.getBooks()
   }
 
   render() {

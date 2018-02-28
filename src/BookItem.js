@@ -8,6 +8,10 @@ class BookItem extends Component {
     render() {
         const { book } = this.props
 
+        const getAuthorList = () => {
+            return book.authors ? book.authors.join(', ') : 'unknown'
+        }
+
         return (
             <div className="book">
                 <div className="book-top">
@@ -33,7 +37,7 @@ class BookItem extends Component {
                     </div>
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors}</div>
+                <div className="book-authors">{getAuthorList()}</div>
             </div>
         )
     }
