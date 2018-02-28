@@ -1,12 +1,16 @@
-html, body, .root {
+html,
+body,
+.root {
   height: 100%;
 }
+
 body {
   line-height: 1.5;
   font-family: 'Roboto', sans-serif;
 }
-body, .app {
-  background: white;
+body,
+.app {
+  background: #fff;
 }
 
 ::-moz-selection {
@@ -14,13 +18,10 @@ body, .app {
   background: #1a8adb;
 }
 
-
 ::selection {
   color: white;
   background: #1a8adb;
 }
-
-/* main page */
 
 .list-books-title {
   padding: 20px 0;
@@ -45,6 +46,9 @@ body, .app {
   font-size: 42px;
   padding-right: 8px;
 }
+
+/*  List Books
+ */
 
 .add-button a {
   display: block;
@@ -105,8 +109,8 @@ body, .app {
   text-align: center;
 }
 
-
-/* search page */
+/*  Search Books
+ */
 
 .search-books-bar {
   width: 50%;
@@ -114,9 +118,11 @@ body, .app {
   display: flex;
   border-bottom: solid 3px #333;
 }
+
 .search-books-input-wrapper {
   flex: 1;
 }
+
 .search-books-bar input {
   width: 100%;
   padding: 15px 10px;
@@ -154,17 +160,18 @@ body, .app {
   letter-spacing: 1px;
 }
 
-/* books grid */
+/*  Books grid
+ */
 
 .books-grid {
   list-style-type: none;
   padding: 0;
   margin: 0;
-
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
+
 .books-grid li {
   padding: 10px 15px;
   text-align: left;
@@ -173,13 +180,16 @@ body, .app {
 .book {
   width: 140px;
 }
+
 .book-title,
 .book-authors {
   font-size: 0.8em;
 }
+
 .book-title {
   margin-top: 10px;
 }
+
 .book-authors {
   color: #999;
 }
@@ -214,7 +224,8 @@ body, .app {
   cursor: pointer;
 }
 
-/* book cover */
+/*  Book cover
+ */
 
 .book-cover {
   background: #eee;
@@ -226,15 +237,14 @@ body, .app {
   font-size: 0.8em;
 }
 
-@media (min-width: 600px) {
-
+@media (min-width: 768px) {
   #root {
     border: solid 20px #333;
     min-height: 100vh;
   }
 }
 
-  @media (max-width: 767px) {
+@media (max-width: 767px) {
   .add-button a {
     top: 0;
     right: 0;
