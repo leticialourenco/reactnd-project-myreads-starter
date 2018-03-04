@@ -8,9 +8,12 @@ class DisplayShelf extends Component {
     }
 
     render() {
-        let books = this.props.books
-        let title = this.props.title
-        let value = this.props.value
+        const {
+            books,
+            title,
+            value
+        } = this.props
+
         let bookList = []
 
         if (title === 'searchResults') {

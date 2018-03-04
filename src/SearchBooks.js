@@ -10,7 +10,7 @@ class SearchBooks extends Component {
     }
 
     updateQuery = (query) => {
-        this.setState({ query: query })
+        this.setState({ query })
         this.searchBooks(query)
     }
 
@@ -20,7 +20,7 @@ class SearchBooks extends Component {
                     if (results.length) {
                         results = this.updateShelfInfo(results)
                     }
-                    this.setState({results: results})
+                    this.setState({ results })
             })
         } else {
             return this.setState({query: '', results: []})
@@ -28,7 +28,7 @@ class SearchBooks extends Component {
     }
 
     updateShelfInfo = (results) => {
-        let books = this.props.books
+        const { books } = this.props
 
         for (let result of results) {
             for (let book of books) {
@@ -42,8 +42,10 @@ class SearchBooks extends Component {
     }
 
     render(){
-        let query = this.state.query
-        let results = this.state.results
+        const {
+            query,
+            results
+        } = this.state
 
         return (
             <div className="search-books">
